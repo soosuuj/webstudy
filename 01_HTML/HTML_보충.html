@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul>
+    <li>운동
+      <ul>
+        <li>축구
+          <ul>
+            <li>공격수</li>
+            <li>수비수</li>
+            <li>골키퍼</li>
+          </ul>
+        </li>
+        <li>야구
+          <ul>
+            <li>투수</li>
+            <li>포수</li>
+            <li>야수</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+
+
+<p> 준비물
+  <ul type="square">
+    <li>김치</li>
+    <li>참치</li>
+  </ul>
+</p>
+<p> 조리법
+  <ol type="1">
+    <li>물을 500cc 넣고 끓인다.</li>
+    <li>김치를 넣는다.</li>
+    <li>참치를 넣는다.</li>
+  </ol>
+</p>
+
+
+<div>
+  <ul type="disc">
+    <li>
+      <span>사원목록</span>
+      <div>
+        <div><a href="javascript:void(0)">무한스크롤</a></div>
+        <div><a href="javascript:void(0)">페이징</a></div>
+        <div><a href="javascript:void(0)">검색</a></div>
+      </div>
+    </li>
+    <li><a href="javascript:void(0)">계층게시판</a></li>
+    <li><a href="javascript:void(0)">블로그</a></li>
+    <li><a href="javascript:void(0)">업로드게시판</a></li>
+    <li><a href="javascript:void(0)">실시간채팅</a></li>
+  </ul>
+</div>
+
+
+<div>
+  <table border="1">
+    <tr>
+      <td rowspan="5">1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td rowspan="3">10</td>
+      <td>11</td>
+      <td>12</td>
+      <td rowspan="2">13</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>17</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td colspan="5">19</td>
+    </tr>
+  </table>
+</div>
+
+<hr>
+
+
+
+<table border="1">
+  <tr>
+    <td colspan="4">1</td>
+    <td rowspan="7">2</td>
+  </tr>
+  <tr>
+    <td rowspan="5">3</td>
+    <td rowspan="4">4</td>
+    <td colspan="2">5</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td rowspan="4">7</td>
+  </tr>
+  <tr>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td colspan="2">10</td>
+  </tr>
+  <tr>
+    <td colspan="4">11</td>
+  </tr>
+</table>
+
+<hr>
+
+<div>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>주소</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>홍길동</td>
+        <td>20세</td>
+        <td colspan="3">서울시 마포구 노고산동</td>
+      </tr>
+      <tr>
+        <th>특기</th>
+        <td colspan="4">먹기</td>
+      </tr>
+      <tr>
+        <th rowspan="2">신체</th>
+        <td colspan="4">180.0cm</td>
+      </tr>
+      <tr>
+        <td colspan="4">83kg</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<div>
+  <table border="1">
+    <caption>우리펜션 객실 안내</caption> <!-- caption 태그는 테이블의 제목을 만든다. -->
+    <tr>
+      <td>방이름</td>
+      <td>고객구분</td>
+      <td>정원</td>
+      <td >가격</td>
+    </tr>
+    <tr>
+      <td >콜로라도</td>
+      <td>여성전용</td>
+      <td rowspan="3">4인실</td>
+      <td rowspan="4">100,000원</td>
+    </tr>
+    <tr>
+      <td rowspan="2">아레나도</td>
+      <td>가족용</td>
+
+    </tr>
+    <tr>
+      <td>커플용</td>
+    </tr>
+    <tr>
+      <td>엘레나</td>
+      <td>커플전용</td>
+      <td>2인실</td>
+    </tr>
+    <tr>
+      <th colspan="4">6월 15일까지 전 객실 50% 할인</th>
+    </tr>
+  </table>
+</div>
+<hr>
+
+<div>
+  <form method="post">
+    <input type="text" placeholder="example@naver.com" name="id">
+    <input type="password" placeholder="비밀번호" name="pwd">
+    <button>로그인</button>
+  </form>
+</div>
+
+<hr>
+
+<div>
+  <form method="post"></form>
+    <table>
+      <tr>
+        <td><input type="text" placeholder="아이디" name="id"></td>
+        <td rowspan="2" ><button>로그인</button></td>
+      </tr>
+      <tr>
+        <td><input type="password"  placeholder="비밀번호" name="pw"></td>
+      </tr>
+    </table>
+</div>
+
+
+<hr>
+<pre>
+  <h3>          개인 정보 작성</h3>
+  이름              <input type="text" name="" id=""> <br>
+  메일주소          <input type="text" name="" id=""> <br>
+  연락처            <input type="text"> <br>
+  블로그/홈페이지   <input type="text"> <br>
+        <button>제출하기</button> <button>다시작성하기</button>
+</pre>
+
+<hr>
+
+<pre>
+  아이디 <input type="text" placeholder="아이디"> <button>중복확인</button>
+  비밀번호 <input type="text" placeholder="새 비밀번호"> 
+  비밀번호 확인 <input type="text" placeholder="비밀번호 확인"> 
+  이메일 <input type="text" placeholder="이메일"> @ <input type="text" list="domain" placeholder="입력 또는 선택">
+  <datalist id="domain">
+    <option value="kakao.com"/>
+    <option value="gmail.com"></option>
+    <option value="naver.com"></option>
+  </datalist>
+  </select>
+  성별
+  <input type="radio" name="gender" value="male">남자 <input type="radio" name="gender" value="female">여자
+  관심
+  <input type="checkbox" name="it" value="it">IT <input type="checkbox" name="busi" value="busi">경영
+  <input type="checkbox" name="bank" value="bank">금융 <input type="checkbox" name="it" value="it">제조
+  <input type="checkbox" name="service" value="service">서비스 <input type="checkbox" name="etc" value="etc">기타
+  거주지 <select name="거주지">
+    <option value="">::선택하세요::</option>
+    <option value="east">서울</option>
+    <option value="west">대전</option>
+    <option value="south">대구</option>
+    <option value="north">부산</option>
+    <option value="north">인천</option>
+</select>   <input type="text">
+  자기소개
+  <textarea cols="30" rows="10" placeholder="200자 이내 간단히 작성"></textarea>
+  이력서 <input type="file" multiple="multiple">
+  제출일 <input type="text">
+  <button>제출</button> <button>다시입력</button>
+   
+    
+
+</pre>
+
+
+</body>
+</html>
