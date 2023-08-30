@@ -350,14 +350,37 @@
   <script>
 
       // 문제. 5초 타이머 동작시키기 (5 4 3 2 1 발사)
-    var n = 5;
-    var timer1 = setInterval(function(){
-      if(n <= 0) {
-        clearTimeout(timer1);
+    var timer1 = document.getElementById('timer1')
+    var countDown = 5;
+    var timerId = setInterval(function(){
+      if(countDown === 0) {
+        timer1.innerHTML = '<h1>발사</h1>'
+        clearInterval(timerId);
       } else {
-        
+        timer1.innerHTML ='<h1>' + countDown-- + '</h1>';
       }
     }, 1000);
+  </script>
+
+  <div id="timer2"></div>
+  <script>
+
+    // 문제. n초 타이머 동작시키기 (n ... 5 4 3 2 1  발사) : setTimeout + 재귀호출
+    var timer2 = document.getElementById('timer2');
+    
+    function myTimer(countDown){
+      setTimeout(function(){
+        if(countDown === 0){
+          timer2.innerHTML = '<h1>발사</h1>';
+        } else {
+          timer2.innerHTML = '<h1>' + countDown + '</h1>';
+          myTimer(countDown - 1);
+        }
+      }, 1000);
+    }
+    myTimer(5);  // 여따 전달하는값이 n 초 타이머가 되는 것임
+
+
   </script>
 
 
