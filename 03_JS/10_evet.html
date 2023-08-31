@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    /*
+      1. 이벤트 대상
+        1) 이벤트가 동작하는 HTML 구성요소이다. (HTML 구성요소 - 객체)
+        2) 이벤트 객체의 target 속성(property)로 확인할 수 있다.
+        3) 현재 문서 객체를 의하는 this 키워드로 확인할 수 있다.
+      
+      2. 이벤트 타입
+        1) 이벤트 종류를 의미한다.
+        2) 이벤트 객체의 type 속성(프로퍼트)으로 확인할 수 있다.
+        3) 주요 이벤트 타입
+          (1) click     : 클릭
+          (2) dblclick  : 더블클릭
+          (3) mouseover : 마우스 가져다대면 동작
+          (4) mouseout  : 마우스 떠나면 동작
+          (5) keydown   : 키 내려갈 때
+          (6) keypress  : 키 누를 때
+          (7) keyup     : 키 올라올 때
+          (8) focus     : 포커스를 가지면
+          (9) blur      : 포커스를 읽으면
+          (10) submit   : 서브밋할 때
+      
+      3. 이벤트 리스너
+        1) 이벤트가 발생하면 동작하는 function()이다.
+        2) 일반적으로 익명 함수를 많이 사용한다.
+        3) 이벤트 리스너(함수)의 매개변수를 선언하면 자동으로 이벤트 객체가 전달(저장)된다.
+
+      4. 이벤트 객체
+        1) 발생한 이벤트의 상세 정보를 저장하고 있는 객체이다.
+        2) 이벤트가 발생하면 자동으로 생성된다.
+        3) 이벤트 객체를 사용하려면 이벤트 리스너(함수)에 매개변수를 선언한다.
+
+      5. 이벤트 모델
+        1) 이벤트를 작성하는 방법이다.
+        2) 종류
+          (1) 고전 이벤트 모델
+          (2) 표준 이벤트 모델
+          (3) 인라인 이벤트 모델
+    */
+
+  </script>
+
+  <script>
+    /*
+      고전 이벤트 모델
+      1. 하나의 이벤트 타입은 하나의 이벤트 리스너만 가질 수 있다.
+      2. 형식
+        1) 선언 함수
+          function 함수명(){
+
+          }
+          문서객체.onclick = 함수명;
+        2) 익명 함수(추천!)
+          문서객체.onclick = function(){
+
+          }
+
+    */ 
+
+  </script>
+
+  <!-- 고전 이벤트 모델 -->
+  <div id="box1">
+    box1
+  </div>
+
+  <script>
+
+    /*
+      1. 이벤트 대상  : document.getElementById('box1')
+                        event. target
+                        this 를 통해서 알아낼 수 있다.
+      2. 이벤트 타입   : click
+      3. 이벤트 리스너 : function(event){}
+      4. 이벤트 객체   : event
+    */
+
+    // 화살표 익명 함수는 event 처리할 때 사용하지 않음 -> this 쓸 떄 안됨!!!
+    document.getElementById('box1').onclick = function(event) {
+    this.style.fontSize = '32px';
+  }
+  </script>
+
+  <script>
+    /*
+      ★표준 이벤트 모델 (권장사항)
+      1. 하나의 이벤트가 여러 개의 이벤트 리스너를 가질 수 있다.
+      2. 형식
+        1) 선언 함수
+          function 함수명(){
+
+          }
+          문서객체.addEventListener('click', 함수명);
+        2) 익명 함수 (추천!)
+          문서객체.addEvetListener('click',function(event){
+          
+          });
+    */
+
+  </script>
+
+    <!-- 표준 이벤트 모델 -->
+    <div id="box2">
+      box2
+    </div>
+    <script>
+      // 두개가 전부 적용된다.
+      document.getElementById('box2').addEventListener('click', function(evet){
+      this.style.fontSize = '32px';
+      });
+      document.getElementById('box2').addEventListener('click', function(evet){
+      this.style.color = 'crimson';
+      });
+
+    </script>
+
+ 
+    <script>
+
+      /*
+        인라인 이벤트 모델 (이벤트로 안씀)
+        1. HTML 구성 요소에 이벤트 속성을 추가하고 실행할 이벤트 리스너를 등록한다.
+        2. 형식
+          1) 선언 함수
+            function 함수명(){
+
+            }
+            <div onclick="함수명()"></div>  // div를 클릭할 때 
+          2) JavaScript 코드  -> 선언함수를 만들고 그걸 호출해서 사용! (익명함수x)
+          <div onclick="alert('메세지')"></div>
+
+      */
+
+    </script>
+
+    <!-- 인라인 이벤트 모델 -->
+    <div id="box3" onclick="myFunc(this)">
+      box3
+    </div>
+    <script>
+      function myFunc(dom){
+        dom.style.fontSize = '32px';
+      }
+    </script>
+
+    <script>
+      /*
+       이벤트 방지하기
+      1. HTML 구성 요소에 따라서 가지고있는 기본 이벤트가 있다.
+        1) <a> 태그를 클릭하면 href 속성으로 이동한다.
+        2) <form> 태그를 서브밋하면 <form>태그의 모든 입력요소들을 action 속성으로 가지고 간다.
+      2. 이러한 기본 이벤트를 방지할 수 있다.  // 입력이 안되있음 굳이 할 필요 없으니까...?
+      3. 이벤트 객체의 preventDefault() 메소드를 호출한다.
+      */
+    
+
+    </script>
+
+    <ul id="site">
+      <li><a href="https://www.google.com/">구글</a></li>
+      <li><a href="https://www.naver.com/">네이버</a></li>
+      <li><a href="https://www.daum.net/">다음</a></li>
+    </ul> 
+
+    <script>
+      var sites = document.querySelectorAll('#site  a'); // a태그 3개니까 배열
+      sites.forEach(function(element){  //element는 a태그 하나 하나임
+        element.addEventListener('click', function(event){
+          if(this.href.endsWith('.net/')){
+            event.preventDefault();
+          }
+        })
+      })
+    </script>
+
+
+    <!-- 문제1. 서브밋 방지하기 // 서브밋 이벤트는 form에다가만!! 단추에다 하면 안됨!!! -->  
+    <!-- 서버로 보내는건 name, id는 js에서 잡아 쓸라고 있는 것  -->
+    <div id="wrap1">
+      <form action="https://search.naver.com/search.naver" id="frm">
+        <div>
+          <input type="text" id="query" name="query"> 
+          <button type="submit">네이버검색</button>
+        </div>
+
+      </form>
+    </div>
+
+    <script>
+      // 주의! 서브밋은 <form> 태그가 이벤트 대상이다. <button> 태그가 아니다.
+      // event 변수명, 키워드 아님!!! - 바꿀 수 있다.
+      document.getElementById('frm').addEventListener('submit', function(event) {
+        // 검색어가 비어 있으면 서브밋 방지
+        if (document.getElementById('query').value === '') {
+          alert('검색어는 필수입니다.');
+          event.preventDefault();  // 방지
+        }
+      });
+
+
+    </script>
+
+    <!-- 문제2. 서브밋 방지하기 -->
+    <!-- 버튼이 서브밋이 아니라 작동이 안됨 -->
+    <!--      <input type="submit" value="다음검색" id="btn_daum_query"> 됨 -->
+    <!-- 버튼은 기본 이벤트가 없다 -> 기본이벤트 방지할게 없음 -->
+    <div id="wrap2">
+      <form action="https://search.daum.net/search" id="frm_daum_query">
+        <div>
+          <input type="text" id="q" name="q">
+          <input type="button" value="다음검색" id="btn_daum_query"> 
+        </div>
+      </form>
+    </div>
+
+    <script>
+      
+      document.getElementById('btn_daum_query').addEventListener('click', function(){
+
+        if(document.getElementById('q').value === ''){
+          alert('검색어는 필수입니다.');
+          return; // 이벤트 리스너 실행 종료  
+                  // 함수의 리턴은 함수종료 -> 함수가 종료되므로 아래문장 실행 안함
+        }
+
+        document.getElementById('frm_daum_query').submit(); //서브밋! ,  서브밋 메소드도 있음
+
+      })
+
+    </script>
+
+
+</body>
+</html>
