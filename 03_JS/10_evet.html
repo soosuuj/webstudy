@@ -153,6 +153,8 @@
       }
     </script>
 
+    <hr>
+
     <script>
       /*
        이벤트 방지하기
@@ -183,6 +185,7 @@
       })
     </script>
 
+    <hr>
 
     <!-- 문제1. 서브밋 방지하기 // 서브밋 이벤트는 form에다가만!! 단추에다 하면 안됨!!! -->  
     <!-- 서버로 보내는건 name, id는 js에서 잡아 쓸라고 있는 것  -->
@@ -209,6 +212,9 @@
 
 
     </script>
+
+    <hr>
+    
 
     <!-- 문제2. 서브밋 방지하기 -->
     <!-- 버튼이 서브밋이 아니라 작동이 안됨 -->
@@ -239,6 +245,76 @@
 
     </script>
 
+    <hr>
+
+    <!-- 문제3. 전체선택/개별 선택 체크하기 -->
+
+    <div id="wrap3">
+      <div>
+        <input type="checkbox" id="chk_all">
+        <label for="chk_all">전체선택</label>
+      </div>
+      <div>
+        <input type="checkbox" id="chk_one" class="chk_each">
+        <label for="chk_one">개별선택1</label>
+      </div>
+      <div>
+        <input type="checkbox" id="chk_two" class="chk_each">
+        <label for="chk_two">개별선택2</label>
+      </div>
+      <div>
+        <input type="checkbox" id="chk_three" class="chk_each">
+        <label for="chk_three">개별선택3</label>
+      </div>
+    </div>
+
+    <script>
+
+      // 전체선택 문서객체
+      var chk_all = document.getElementById('chk_all');
+
+      // 모든 개별 선택 문서객체
+      var chk_each = document.getElementsByClassName('chk_each');
+
+      // 1. 전체 선택을 클릭하면 전체 선택의 체크 상태를 개별선택들도 동일하게 가진다.
+      chk_all.addEventListener('click', function(){
+      for (let i = 0; i < chk_each.length; i++) {
+        chk_each[i].checked = chk_all.checked;
+      }
+     })
+
+     // 2.  개별 선택을 클릭하면 '모든 개별 선택의 체크 상태를 확인'해서 모두 체크 되어있으면 전체 선택을 체크하고 아니면 해제한다.
+     //  1번을 클릭해도 다보고, 3번을 클릭해도 다 보고...
+  
+     for(let i = 0; i < chkEach.length; i++){
+        chkEach[i].addEventListener('click', function(){  //chkEach[i] i번을 클릭했다는뜻
+          let total = 0;
+          for(let j = 0 ; j < chkEach.length; j++){
+            total += chkEach[j].checked   // 체크된 경우 total += 1, 해제된 경우 total += 0으로 동작한다.
+          }
+          chk_all.checked =(total === chkEach.length);
+        });
+      }
+     
+
+    </script>
+
+    <!-- 문제4. box를 클릭하면 box 색상을 임의로 변경하기 -->
+    <div id="wrap4">
+      box
+    </div>
+    <script>
+      // 난수 발생 함수
+       function getRandomInt(start, count){
+        return Math.floor(Math.random() * count) + start;
+       }
+
+
+      document.getElementById('wrap4').addEventListener('click', function(){
+        this.style.backgroundColor = 'rgb(' + getRandomInt(0, 256) + ', ' + getRandomInt(0, 256) + ', ' + getRandomInt(0, 256) + ')'; 
+      })
+
+    </script>
 
 </body>
 </html>
