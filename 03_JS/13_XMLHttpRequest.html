@@ -26,13 +26,13 @@
       동기 통신 : 요청 결과(응답)를 받을 때까지 새로운 요청을 하지 않는 통신 방식
       client                         server
         A ---------------------------→ A
-        ACK ←-------------------------(A 성공)
+        ACK ←------------------------- (A 성공)
         B ---------------------------→ B
-        ACK ←-------------------------(B 성공)
+        ACK ←------------------------- (B 성공)
         C ---------------------------→ C
-        NAK ←-------------------------(C 실패)
+        NAK ←------------------------- (C 실패)
         C ---------------------------→ C
-        ACK ←-------------------------(C 성공)
+        ACK ←------------------------- (C 성공)
         D ---------------------------→ D
         ...
     */
@@ -41,13 +41,13 @@
       client                         server
         A ---------------------------→ A
         B ---------------------------→ B
-        ACK ←-------------------------(A 성공)
+        ACK ←------------------------- (A 성공)
         C ---------------------------→ C
         D ---------------------------→ D
-        ACK ←-------------------------(B 성공)
-        NAK ←-------------------------(C 실패)
+        ACK ←------------------------- (B 성공)
+        NAK ←------------------------- (C 실패)
         C ---------------------------→ C
-        ACK ←-------------------------(C 성공)
+        ACK ←------------------------- (C 성공)
         ...
     */
 
@@ -87,8 +87,8 @@
           if(xhr.status === 200){
             var data = xhr.responseXML;
             var str = '';
-            var title = data.getElementsByName('title');
-            var author = data.getElementsByTagName('author')
+            var title = data.getElementsByTagName('title');
+            var author = data.getElementsByTagName('author');
             for(let i = 0; i < title.length; i++){
               str += '<ul>'
               str += '<li>' + title[i].textContent + '</li>';
@@ -119,18 +119,17 @@
       var xhr = new XMLHttpRequest();
       xhr.open('get', 'book2.xml', true);
       xhr.send();
-      xhr.addEventListener('readstatechange', function(){
-        if(xhr.readyState ===4){
+      xhr.addEventListener('readystatechange', function(){
+        if(xhr.readyState === 4){
           if(xhr.status === 200){
             var data = xhr.responseXML;
             var book = data.getElementsByTagName('book');
-            var str ='';
-            for(let i = 0 ; book.length; i++ ){
+            var str = '';
+            for(let i = 0; i < book.length; i++){
               str += '<ul>';
               str += '<li>' + book[i].getAttribute('title') + '</li>';
               str += '<li>' + book[i].getAttribute('author') + '</li>';
-              str += '<ui>';
-              
+              str += '</ul>';
             }
             document.getElementById('xml_response2').innerHTML = str;
           }
