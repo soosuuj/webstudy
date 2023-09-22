@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- 어떤 개념으로 데이터가 왔다갔다하는지 알면됨, 스프링엔 없는 코드도 있을거니까... -->
+<!-- ajax 해당 페이지 변화 없이 요청과 응답이 진행될 수 있는 특징을 가지고 있다. -->
+
+  <div>
+    <div>
+      <input type="text" id="name" placeholder="이름">
+    </div>
+     <div>
+      <input type="text" id="age" placeholder="나이">
+    </div>
+    <div>
+      <button type="button" id="btn1">XML요청</button>
+    </div>
+    <div id="content1"></div>
+  </div>
+  <script>
+    $('#btn1').click(function(){
+      $.ajax({
+        /* 요청 */
+        type: 'get',
+        url: '/servlet/getXML',
+        data: 'name=' + $('#name').val() + '&age=' + $('#age').val(),
+        // async: true, 앞으로 생략 ajax은 기본 true
+        
+        // form, name 없음 -> submit이 아니다..
+        // parameter 전송은 submit 아니여도 jQuery DOM 으로 알아낼 수 있음
+        
+        /* 응답 */
+        dataType: 'xml',
+        success: function(resData){  // resData는 <person><name><age>30</age></name></person> 형태이다.
+          $('#content1').empty();
+          var ul = '<ul>';
+          ul += '<li>' + $(resData).find('name').text() + '</li>';        
+          ul += '<li>' + $(resData).find('age').text() + '</li>';
+          $('#content1').append(ul);
+        
+         // var ul = $('<ul>'); // 변수명 오타 수정: 'ul'로 변경
+         // ul.append($('<li>').text($(resData).find('name').text()));
+         // ul.append($('<li>').text($(resData).find('age').text()));
+         // $('#content1').html(ul);  -> 2. 기존 목록으로 덮어 쓰기 해서  1. $('#content1').empty(); 이 코드 안써도 됨!!
+        },
+        error: function(jqXHR){
+          alert(jqXHR.status +'(' + jqXHR.statusText + ')' )
+        }
+      })
+    })
+  </script>
+  
+  <hr>
+  
+  <div>
+    <form id="frm">
+      <div>
+        <input type="text" name="title" placeholder="제목">  <!-- id -> name 으로 변경 -->
+      </div>
+       <div>
+        <input type="text" name="writer" placeholder="작성자">
+      </div>
+      <div>
+        <button type="button" id="btn2">JSON요청</button> 
+      </div>
+    </form>
+      <div id="content2"></div>
+  </div>
+  <script>
+  $('#btn2').click(function(){
+    $.ajax({
+      /* 요청 */
+      type: 'get',
+      url : '/servlet/getJSON',
+      data : $('#frm').serialize(), // <form> 태그의 모든 입력 요소들을 파라미터로 보낸다. 이때 입력 요소들은 "name" 속성을 가지고 있어야 합니다.
+      /* 응답 */
+      dataType : 'json',
+      success : function(resData){ //resData 는 {"writer":"관리자", "title": "공지사항"}이다.
+       var str = '';
+       str += '<h4>' + resData.title + '</h4>';
+       str += '<h4>' + resData.writer + '</h4>'
+       $('#content2').html(str);
+        
+        
+      },
+      error: function(jqXHR){
+        alert(jqXHR.status + '(' + jqXHR.statusText + ')');
+      }
+    });
+  });
+  </script>
+  
+  
+</body>
+</html>

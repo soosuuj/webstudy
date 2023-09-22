@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script>
+
+  // do_not_open_today 쿠기값 확인
+  var popupCookie = Cookies.get('do_not_open_today');  // 해당 쿠키가 없으면 undefined
+
+  if(popupCookie !== 'true'){  //true 가 아니면 undefined
+    window.open('popup.html', '', 'width=300, height=500, top=100, left=100');
+  }
+  
+</script>
+
+
+</head>
+<body>
+
+<!-- js min(압축버전) 쿠키 사용을 도와주는 스크립트 상단에 추가 -->
+
+  <div>
+    화면
+  </div>
+
+
+</body>
+</html>

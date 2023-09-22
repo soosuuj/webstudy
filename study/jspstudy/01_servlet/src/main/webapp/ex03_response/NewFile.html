@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- method 생략 get 방식 
+     같은 프로젝트 안에서는 같은 컨테스트패스 사용-->
+     <!-- input 입력, 데이터리스트에서 선택한걸 고르거나.. name 필수
+     datalist에만 쓰면 이것만 감 /name="domain" 이게 파리미터
+     url mapping /serlvet/response 주의 -->
+     
+     <!-- 
+     name="gender": 라디오 버튼 그룹을 식별하는 이름입니다. 
+     같은 name 속성 값을 가지는 라디오 버튼은 하나의 그룹으로 간주되어, 
+     그룹 내에서는 하나의 옵션만 선택할 수 있습니다.
+
+    value="man": 라디오 버튼의 값입니다. 
+    선택한 옵션을 서버로 제출할 때 이 값이 전달됩니다. 
+    이 예에서는 "man"이라는 값을 가지는 라디오 버튼이 생성됩니다.
+
+    id="man": 라디오 버튼의 고유 식별자입니다. 
+    라벨과 연결할 때 사용될 수 있으며, 
+    라벨을 클릭하면 해당 라디오 버튼이 선택됩니다. -->
+
+  <div>
+    <form method="post" action="/servlet/response">
+      <div>
+        <input type="radio" name="gender" value="man" id="man">
+        <label for="man">남자</label>
+        <input type="radio" name="gender" value="woman" id="woman">
+        <label for="woman">여자</label>
+        <input type="radio" name="gender" value="none" id="none" checked>
+        <label for="none">선택안함</label>
+      </div>
+      <div>
+      <!-- radio ﻿2개 이상 선택 될 염려가 없기 때문에 배열이 아님 "String!!!" -->
+        <input type="text" list="domain" name="domain">
+        <datalist id="domain">
+          <option value="naver.com"/>
+          <option value="kakao.com"/>
+          <option value="gmail.com"/>
+        </datalist>
+      </div>
+      <div>
+        <textarea rows ="5" cols="50" name="content"></textarea>
+      </div>
+      <div>
+        <input type="hidden" name="region" value="seoul"> 
+        <!-- 사용자의 입력과 상관 없이 서버로 보내고 싶은 값은 hidden, 사용자가 입력 x value가 있어야함 -->
+        <button type="submit">전송하기</button>
+      </div>
+      
+    </form>
+    <!-- 여따 input 쓰면 전송 x, form 안으로!! -->
+  </div>
+
+</body>
+</html>
